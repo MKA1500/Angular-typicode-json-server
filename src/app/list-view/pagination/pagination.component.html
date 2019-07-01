@@ -1,0 +1,30 @@
+<nav aria-label="Data grid navigation">
+  <ul class="pagination justify-content-end">
+    <li class="page-item">
+      <button
+        class="page-link"
+        href="#"
+        id="previousPage"
+        (click)="getPreviousPage()"
+        [disabled]="currentData.pageNum == 1">
+        Previous
+      </button>
+    </li>
+    <li class="page-item active">
+      <button
+        class="page-link info-btn"
+        href="#">{{ currentData.pageNum }} <span class="sr-only">(current)</span>
+      </button>
+    </li>
+    <li class="page-item">
+      <button
+        class="page-link"
+        id="nextPage"
+        href="#"
+        (click)="getNextPage()"
+        [disabled]="lastPage">
+        Next
+      </button>
+    </li>
+  </ul>
+</nav>

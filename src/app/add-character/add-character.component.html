@@ -1,0 +1,21 @@
+<h1>Add New Character</h1>
+<form>
+  <div class="row">
+    <div class="col-md-6">
+      <input
+        type="text"
+        class="form-control"
+        placeholder="Name"
+        required>
+    </div>
+    <div class="col-md-6">
+      <select
+        class="form-control"
+        required>
+        <option *ngFor="let spec of species">
+        {{ spec }}
+      </option>
+      </select>
+    </div>
+  </div>
+</form>

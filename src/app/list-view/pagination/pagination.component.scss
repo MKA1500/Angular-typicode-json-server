@@ -1,0 +1,9 @@
+button {
+  &.info-btn {
+    pointer-events: none;
+  }
+  &[disabled] {
+    color: #555;
+    cursor: not-allowed;
+  }
+}

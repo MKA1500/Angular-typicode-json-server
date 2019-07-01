@@ -1,0 +1,15 @@
+.table {
+  .no-results-tr {
+    text-align: center;
+    &:hover {
+      background-color: #FFF;
+    }
+    td {
+      padding: 1.5rem;
+    }
+  }
+  th, td {
+      padding: 0.45rem;
+      vertical-align: middle;
+  }
+}
