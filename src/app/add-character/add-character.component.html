@@ -1,21 +1,63 @@
 <h1>Add New Character</h1>
-<form>
+<form class="add-character-form">
   <div class="row">
     <div class="col-md-6">
-      <input
-        type="text"
-        class="form-control"
-        placeholder="Name"
-        required>
+      <div class="form-group">
+        <label for="charName">Name<span class="required">*</span></label>
+        <input
+          type="text"
+          class="form-control"
+          id="charName"
+          required>
+      </div>
     </div>
     <div class="col-md-6">
-      <select
-        class="form-control"
-        required>
-        <option *ngFor="let spec of species">
-        {{ spec }}
-      </option>
-      </select>
+      <div class="form-group">
+        <label for="charSpecies">Species<span class="required">*</span></label>
+        <select
+          class="form-control"
+          id="charSpecies"
+          required>
+          <option *ngFor="let spec of species">
+            {{ spec }}
+          </option>
+        </select>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="charGender">Gender<span class="required">*</span></label>
+        <div class="radios">
+          <label>
+            <input
+              type="radio"
+              name="charGender"
+              value="male"
+              required> Male
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="charGender"
+              value="female"> Female
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="charGender"
+              value="n/a"> n/a
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-group">
+        <label for="charHomeworld">Homeworld</label>
+        <input
+          type="text"
+          class="form-control"
+          id="charHomeworld">
+      </div>
     </div>
   </div>
 </form>
