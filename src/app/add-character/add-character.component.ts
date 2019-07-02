@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 import { CharactersService } from '../shared/characters.service';
 
 @Component({
@@ -7,6 +8,7 @@ import { CharactersService } from '../shared/characters.service';
   styleUrls: ['./add-character.component.scss']
 })
 export class AddCharacterComponent implements OnInit {
+  addNewCharacterForm: FormGroup;
   species: string[];
 
   constructor(private speciesData: CharactersService) { }
@@ -15,8 +17,18 @@ export class AddCharacterComponent implements OnInit {
     this.speciesData.getSpecies()
       .subscribe((res: string[]) => {
         this.species = res;
-        console.log(this.species);
       });
+
+    this.addNewCharacterForm = new FormGroup({
+      'charName': new FormControl(),
+      'charSpecies': new FormControl(),
+      'charGender': new FormControl(),
+      'charHomeworld': new FormControl()
+    });
+  }
+
+  onSubmit() {
+    console.log(this.addNewCharacterForm);
   }
 
 }

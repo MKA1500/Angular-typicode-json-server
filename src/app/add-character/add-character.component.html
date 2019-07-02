@@ -1,30 +1,32 @@
-<h1>Add New Character</h1>
-<form class="add-character-form">
-  <div class="row">
-    <div class="col-md-6">
+<div class="row">
+  <div class="offset-md-2 col-md-8">
+    <h1>Add New Character</h1>
+    <form
+      class="add-character-form"
+      [formGroup]="addNewCharacterForm"
+      (ngSubmit)="onSubmit()"
+      >
       <div class="form-group">
         <label for="charName">Name<span class="required">*</span></label>
         <input
           type="text"
           class="form-control"
           id="charName"
+          formControlName="charName"
           required>
       </div>
-    </div>
-    <div class="col-md-6">
       <div class="form-group">
         <label for="charSpecies">Species<span class="required">*</span></label>
         <select
           class="form-control"
           id="charSpecies"
+          formControlName="charSpecies"
           required>
           <option *ngFor="let spec of species">
             {{ spec }}
           </option>
         </select>
       </div>
-    </div>
-    <div class="col-md-6">
       <div class="form-group">
         <label for="charGender">Gender<span class="required">*</span></label>
         <div class="radios">
@@ -32,6 +34,7 @@
             <input
               type="radio"
               name="charGender"
+              formControlName="charGender"
               value="male"
               required> Male
           </label>
@@ -39,25 +42,30 @@
             <input
               type="radio"
               name="charGender"
+              formControlName="charGender"
               value="female"> Female
           </label>
           <label>
             <input
               type="radio"
               name="charGender"
+              formControlName="charGender"
               value="n/a"> n/a
           </label>
         </div>
       </div>
-    </div>
-    <div class="col-md-6">
       <div class="form-group">
         <label for="charHomeworld">Homeworld</label>
         <input
           type="text"
           class="form-control"
+          formControlName="charHomeworld"
           id="charHomeworld">
       </div>
-    </div>
+      <button
+        class="btn btn-primary pull-right"
+        type="submit">Add New
+      </button>
+    </form>
   </div>
-</form>
+</div>
