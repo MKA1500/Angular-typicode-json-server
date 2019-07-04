@@ -16,7 +16,15 @@ export class CharactersService {
   }
 
   postSpecies(newChar) {
-    return this.http.post<Character[]>(this.charactersUrl, newChar);
+    return this.http.post<Character>(this.charactersUrl, newChar)
+      .subscribe(
+          res => {
+            console.log(res);
+          },
+          err => {
+            console.log("Error occured:" + err);
+          }
+        );
   }
 
   getSpecies() {
