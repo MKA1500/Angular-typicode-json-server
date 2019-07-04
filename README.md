@@ -36,7 +36,7 @@ As a user I want to filter results by using the search box above the data grid.
 
 * Searching should use the [full-text search api endpoint](https://github.com/typicode/json-server#full-text-search).
 * When there are no results matching the current query a "No Results Found" message is shown.
-* Search requests to API are debounced by 200 ms.
+* Search requests to API are debounced by 200 ms. (TO DO)
 * A regular list of items is shown when the search query input is empty.
 
 ### New entity form
@@ -57,7 +57,7 @@ As a user I want to be able to add new characters by using a new form.
   * required - This field is required.
 * Invalid form fields should be styled using `.is-invalid` [bootstrap css class](https://getbootstrap.com/docs/4.1/components/forms/#server-side). A field should be styled as invalid only if it is invald and form field has been touched or user has tried to submit an invalid form. Similiar logic should be applied to the visibility of error messages - an error message should be displayed only if a form field is styled as invalid.
 * Add Character form submit button should only be disabled when the request creating a new item is in progress.
-* If a user tries to submit the form but the form is invalid, the top-most invalid form field should get focused.
+* If a user tries to submit the form but the form is invalid, the top-most invalid form field should get focused. (TO DO)
 * Submitting a valid form should send a POST request to ([http://localhost:3000/characters](http://localhost:3000/characters)).
 * Successfully creating a new item should navigate the user to the main list view.
 

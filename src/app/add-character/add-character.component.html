@@ -6,52 +6,84 @@
       [formGroup]="addNewCharacterForm"
       (ngSubmit)="onSubmit()"
       >
-      <div class="form-group">
+      <div class="form-group mb-0">
         <label for="charName">Name<span class="required">*</span></label>
         <input
           type="text"
           class="form-control"
+          [ngClass]="{ 'is-invalid': (!f.charName.valid && f.charName.touched) || (submitted && f.charName.errors) }"
           id="charName"
           formControlName="charName"
           required>
+          <div class="help-block">
+            <div
+              *ngIf="(!f.charName.valid && f.charName.touched) || (submitted && f.charName.errors)">
+              <span
+                *ngIf="f.charName.errors.required"
+                class="error-message">This field is required.</span>
+            </div>
+          </div>
       </div>
-      <div class="form-group">
+      <div class="form-group mb-0">
         <label for="charSpecies">Species<span class="required">*</span></label>
         <select
           class="form-control"
+          [ngClass]="{ 'is-invalid': (!f.charSpecies.valid && f.charSpecies.touched) || (submitted && f.charSpecies.errors) }"
           id="charSpecies"
           formControlName="charSpecies"
           required>
+          <option [ngValue]="null">Please select...</option>
           <option *ngFor="let spec of species">
             {{ spec }}
           </option>
         </select>
+        <div class="help-block">
+          <div
+            *ngIf="(!f.charSpecies.valid && f.charSpecies.touched) || (submitted && f.charSpecies.errors)">
+            <span
+              *ngIf="f.charSpecies.errors.required"
+              class="error-message">This field is required.</span>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
+      <div class="form-group mb-0">
         <label for="charGender">Gender<span class="required">*</span></label>
         <div class="radios">
-          <label>
+          <label
+            [ngClass]="{ 'is-invalid': submitted && f.charGender.errors }">
             <input
               type="radio"
               name="charGender"
+              [ngClass]="{ 'is-invalid': submitted && f.charGender.errors }"
               formControlName="charGender"
               value="male"
               required> Male
           </label>
-          <label>
+          <label
+            [ngClass]="{ 'is-invalid': submitted && f.charGender.errors }">
             <input
               type="radio"
               name="charGender"
+              [ngClass]="{ 'is-invalid': submitted && f.charGender.errors }"
               formControlName="charGender"
               value="female"> Female
           </label>
-          <label>
+          <label
+            [ngClass]="{ 'is-invalid': submitted && f.charGender.errors }">
             <input
               type="radio"
               name="charGender"
               formControlName="charGender"
               value="n/a"> n/a
           </label>
+        </div>
+        <div class="help-block">
+          <div
+            *ngIf="(submitted && f.charGender.errors)">
+            <span
+              *ngIf="f.charGender.errors.required"
+              class="error-message">This field is required.</span>
+          </div>
         </div>
       </div>
       <div class="form-group">
@@ -64,7 +96,8 @@
       </div>
       <button
         class="btn btn-primary pull-right"
-        type="submit">Add New
+        [disabled]="submitted && addNewCharacterForm.invalid"
+        type="submit">Add Character
       </button>
     </form>
   </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
+import { Router } from '@angular/router';
+
 import { CharactersService } from '../shared/characters.service';
 
 @Component({
@@ -10,8 +12,13 @@ import { CharactersService } from '../shared/characters.service';
 export class AddCharacterComponent implements OnInit {
   addNewCharacterForm: FormGroup;
   species: string[];
+  submitted = false;
 
-  constructor(private speciesData: CharactersService) { }
+  constructor(
+    private speciesData: CharactersService,
+    private formBuilder: FormBuilder,
+    private router: Router
+  ) { }
 
   ngOnInit() {
     this.speciesData.getSpecies()
@@ -19,16 +26,24 @@ export class AddCharacterComponent implements OnInit {
         this.species = res;
       });
 
-    this.addNewCharacterForm = new FormGroup({
-      'charName': new FormControl(),
-      'charSpecies': new FormControl(),
-      'charGender': new FormControl(),
+    this.addNewCharacterForm = this.formBuilder.group({
+      'charName': new FormControl(null, [Validators.required]),
+      'charSpecies': new FormControl(null, [Validators.required]),
+      'charGender': new FormControl(null, [Validators.required]),
       'charHomeworld': new FormControl()
     });
   }
 
+  get f() { return this.addNewCharacterForm.controls; }
+
   onSubmit() {
-    console.log(this.addNewCharacterForm);
+    this.submitted = true;
+    if (this.addNewCharacterForm.invalid) {
+        console.log('invalid!');
+    } else {
+      console.log(this.addNewCharacterForm.value);
+      this.router.navigate(['']);
+    }
   }
 
 }

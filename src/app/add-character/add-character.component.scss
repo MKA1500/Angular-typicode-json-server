@@ -14,9 +14,23 @@
     label {
       margin-bottom: 0;
       margin-left: .75rem;
+      border-bottom: 1px solid transparent;
+      &.is-invalid {
+        border-bottom: 1px solid #dc3545;
+      }
       &:first-child {
         margin-left: 0;
       }
     }
+  }
+  .help-block {
+    min-height: 1.625rem;
+  }
+  .error-message {
+    color: #dc3545;
+    font-size: .875rem;
+  }
+  .success-message {
+    color: #25a115;
   }
 }
