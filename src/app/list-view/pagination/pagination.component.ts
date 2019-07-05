@@ -21,10 +21,6 @@ export class PaginationComponent implements OnInit {
 
   }
 
-  // the default for json-server api is 10 per pages
-  // the code below should be refactored
-  // in case of there will be 10 items on the last page...
-
   getNextPage() {
     if (this.currentData.chars.length > 9) {
       this.currentData.pageNum = +this.currentData.pageNum + 1;
