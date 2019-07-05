@@ -29,8 +29,6 @@ export class PaginationComponent implements OnInit {
     if (this.currentData.chars.length > 9) {
       this.currentData.pageNum = +this.currentData.pageNum + 1;
       this.anotherPage.emit(this.currentData.pageNum);
-    } else {
-      this.lastPage = true;
     }
   }
 
@@ -38,7 +36,6 @@ export class PaginationComponent implements OnInit {
     if (this.currentData.pageNum > 1) {
       this.currentData.pageNum = +this.currentData.pageNum - 1;
       this.anotherPage.emit(this.currentData.pageNum);
-      this.lastPage = false;
     }
   }
 }

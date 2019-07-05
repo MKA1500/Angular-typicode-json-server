@@ -5,8 +5,7 @@
         class="page-link"
         href="#"
         id="previousPage"
-        (click)="getPreviousPage()"
-        [disabled]="currentData.pageNum == 1">
+        (click)="getPreviousPage()">
         Previous
       </button>
     </li>
@@ -21,8 +20,7 @@
         class="page-link"
         id="nextPage"
         href="#"
-        (click)="getNextPage()"
-        [disabled]="lastPage">
+        (click)="getNextPage()">
         Next
       </button>
     </li>
